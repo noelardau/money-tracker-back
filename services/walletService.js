@@ -3,6 +3,14 @@ let wallet_service = prisma.wallet
 
 let findWalletByUserId = async (idUser)=>{
     try {    
+          if(idUser == undefined){
+            return new Error("idUser is required")
+          }
+
+          if(idUser <=0){
+            return new Error("The idUser is must > 0")
+          }
+
           let user_wallets = await wallet_service.findMany({
               where: {
                         idUser: +idUser
@@ -11,10 +19,9 @@ let findWalletByUserId = async (idUser)=>{
 
           return user_wallets  
         } catch (error) {
-          throw new Error(error);
+          throw error         
         }
 }
-
 
 let createWallet = async (new_wallet)=>{
     try { 
@@ -29,9 +36,6 @@ let createWallet = async (new_wallet)=>{
         } catch (error) {        
         throw console.error(error);
         }
-
-
-
 }
 
 let updateWallet = async(wallet_to_update)=>{
@@ -48,11 +52,7 @@ let updateWallet = async(wallet_to_update)=>{
         } catch (error) {
       throw new Error("error");
         }
-
-  
-
 }
-
 
 let deleteWallet = async(idWallet)=>{
     try {
@@ -60,10 +60,8 @@ let deleteWallet = async(idWallet)=>{
         return wallet_deleted 
         } catch (error) {
         throw console.error(error);
-        }    
+        }  
 }
-
-
 
 module.exports = {
     findWalletByUserId,
