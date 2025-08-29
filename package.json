@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node  ./bin/www",
     "dev": "nodemon",
-    "test": "jest --runInBand"
+    "test": "jest --watchAll"
   },
   "dependencies": {
     "@prisma/client": "^6.14.0",
