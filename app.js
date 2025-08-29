@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api.wallet/', wallet_router);
+app.use('/api.wallets/', wallet_router);
 
 
 module.exports = app;
