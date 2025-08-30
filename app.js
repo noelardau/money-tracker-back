@@ -5,6 +5,7 @@ var logger = require('morgan');
 
 
 let wallet_router = require("./routes/wallet")
+let expense_router = require("./routes/expense")
 
 
 var app = express();
@@ -17,6 +18,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api.wallets/', wallet_router);
+app.use("/api.expenses/", expense_router)
 
 
 module.exports = app;

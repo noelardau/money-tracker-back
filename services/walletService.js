@@ -1,5 +1,5 @@
 let prisma = require("../lib/prisma")
-let wallet_service = prisma.wallet
+let wallet_model = prisma.wallet
 
 let findWalletByUserId = async (idUser)=>{
     try {    
@@ -11,7 +11,7 @@ let findWalletByUserId = async (idUser)=>{
             return new Error("The idUser is must > 0")
           }
 
-          let user_wallets = await wallet_service.findMany({
+          let user_wallets = await wallet_model.findMany({
               where: {
                         idUser: +idUser
                       }
@@ -25,7 +25,7 @@ let findWalletByUserId = async (idUser)=>{
 
 let createWallet = async (new_wallet)=>{
     try { 
-          let wallet_created = await wallet_service.create({
+          let wallet_created = await wallet_model.create({
               data: {
                       idUser: new_wallet.idUser,
                       name: new_wallet.name
@@ -40,7 +40,7 @@ let createWallet = async (new_wallet)=>{
 
 let updateWallet = async(wallet_to_update)=>{
     try {
-          let wallet_updated = await prisma.wallet.update({
+          let wallet_updated = await wallet_model.update({
               data: {
                       solde: wallet_to_update.solde,
                       name: wallet_to_update.name
@@ -56,7 +56,7 @@ let updateWallet = async(wallet_to_update)=>{
 
 let deleteWallet = async(idWallet)=>{
     try {
-        let wallet_deleted = await prisma.wallet.delete({ where: {id: +idWallet}})
+        let wallet_deleted = await wallet_model.delete({ where: {id: +idWallet}})
         return wallet_deleted 
         } catch (error) {
         throw console.error(error);

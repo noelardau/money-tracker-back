@@ -8,9 +8,19 @@ generator client {
 }
 
 model Wallet {
-  id    Int     @id @default(autoincrement())
+  id     Int    @id @default(autoincrement())
   idUser Int
-  name  String
-  solde Int @default(0)
+  name   String
+  solde  Int    @default(0)
 
+  expenses Expense[]
+}
+
+model Expense {
+  id          Int      @id @default(autoincrement())
+  description String
+  value       Int
+  date        DateTime @default(now())
+  idWallet    Int
+  wallet      Wallet   @relation(references: [id], fields: [idWallet])
 }
