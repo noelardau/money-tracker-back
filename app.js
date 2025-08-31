@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 let wallet_router = require("./routes/wallet")
 let expense_router = require("./routes/expense")
-
+let income_router = require("./routes/income")
 
 var app = express();
 
@@ -19,6 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api.wallets/', wallet_router);
 app.use("/api.expenses/", expense_router)
+app.use("/api.incomes/", income_router)
 
 
 module.exports = app;

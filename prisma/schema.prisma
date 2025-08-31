@@ -14,9 +14,19 @@ model Wallet {
   solde  Int    @default(0)
 
   expenses Expense[]
+  incomes Income[]
 }
 
 model Expense {
+  id          Int      @id @default(autoincrement())
+  description String
+  value       Int
+  date        DateTime @default(now())
+  idWallet    Int
+  wallet      Wallet   @relation(references: [id], fields: [idWallet])
+}
+
+model Income {
   id          Int      @id @default(autoincrement())
   description String
   value       Int
