@@ -1,4 +1,4 @@
-let {findWalletByUserId, createWallet, updateWallet, deleteWallet} = require("../services/walletService")
+let {findWalletByUserId, createWallet, updateWallet, deleteWallet, soldeUp, soldeDown} = require("../services/walletService")
 let {sendResponse, sendError} = require("../helpers/responseHandler")
 
 let getWalletsByUserId = async (req,res)=>{
@@ -41,22 +41,59 @@ let putUpdateWallet = async(req,res)=>{
 }
 
 
-let deleteWalletById = async (req, res)=>{
+let deleteWalletById = async (req, res,next)=>{
 
   try {
     
     let deleted_wallet = await deleteWallet(req.params.idWallet)
+    
     sendResponse(res, deleted_wallet, 200)
+    next()
 
   } catch (error) {
     sendError(res, error)
+    next()
   }  
+}
+
+
+let updateSoldeToUp = async(req,res)=>{
+
+   try {
+    
+    let updated_wallet = await soldeUp(req.body)
+  
+    sendResponse(res, updated_wallet, 200)
+  } catch (error) {
+    sendError(res, error)
+    
+  }
+
+
+}
+
+
+let updateSoldeToDown = async(req,res)=>{
+
+   try {
+    
+    let updated_wallet = await soldeDown(req.body)
+  
+    sendResponse(res, updated_wallet, 200)
+  } catch (error) {
+    sendError(res, error)
+    
+  }
+
+
 }
 
 module.exports = {
     getWalletsByUserId,
     postNewWallet,
     putUpdateWallet,
-    deleteWalletById
+    deleteWalletById,
+    updateSoldeToUp,
+    updateSoldeToDown
 }
 

@@ -63,9 +63,53 @@ let deleteWallet = async(idWallet)=>{
         }  
 }
 
+
+let soldeUp = async(deleted_expense)=>{
+      
+      try {      
+          
+          let wallet_updated = await wallet_model.update({
+              data: {
+                      solde:  {
+                        increment: deleted_expense.value
+                      },
+                    },
+              where: {id: deleted_expense.idWallet}
+          })
+
+          return wallet_updated
+        } catch (error) {
+      throw new Error("error");
+        }
+}
+
+
+let soldeDown = async(deleted_expense)=>{
+      
+      try {      
+          
+          let wallet_updated = await wallet_model.update({
+              data: {
+                      solde:  {
+                        decrement: deleted_expense.value
+                      },
+                    },
+              where: {id: deleted_expense.idWallet}
+          })
+
+          return wallet_updated
+        } catch (error) {
+      throw new Error("error");
+        }
+}
+
+
+
 module.exports = {
     findWalletByUserId,
     createWallet,
     updateWallet,
-    deleteWallet
+    deleteWallet,
+    soldeUp,
+    soldeDown
 }
