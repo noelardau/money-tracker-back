@@ -51,9 +51,9 @@ let updateExpense = async(expense_to_update)=>{
               where: {id: expense_to_update.id}
           })
 
-          return expense_updated_updated
+          return expense_updated
         } catch (error) {
-      throw new Error("error");
+      return new Error("error");
         }
 }
 

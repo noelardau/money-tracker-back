@@ -56,8 +56,8 @@ let deleteExpenseById = async (req, res)=>{
   try {
     console.log(req.params.idExpense)
     
-    // let deleted_expense = await deleteExpense(req.params.idExpense)
-    // sendResponse(res, deleted_expense, 200)
+    let deleted_expense = await deleteExpense(req.params.idExpense)
+    sendResponse(res, deleted_expense, 200)
     sendResponse(req.params.idExpense)
 
   } catch (error) {
@@ -69,5 +69,5 @@ let deleteExpenseById = async (req, res)=>{
 
 module.exports = {
     getExpenseByWalletId,
-    postExpense, putUpdateExpense, deleteExpense
+    postExpense, putUpdateExpense, deleteExpenseById
 }
