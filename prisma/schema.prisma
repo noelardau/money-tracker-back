@@ -9,7 +9,7 @@ generator client {
 
 model Wallet {
   id     Int    @id @default(autoincrement())
-  idUser Int
+  idUser String
   name   String
   solde  Int    @default(0)
 
