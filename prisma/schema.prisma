@@ -12,6 +12,7 @@ model Wallet {
   idUser String
   name   String
   solde  Int    @default(0)
+  devise String @default("Ar")
 
   expenses Expense[]
   incomes Income[]
