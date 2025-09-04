@@ -64,7 +64,7 @@ let updateWallet = async(wallet_to_update)=>{
     try {
           let wallet_updated = await wallet_model.update({
               data: {
-                      solde: wallet_to_update.solde,
+
                       name: wallet_to_update.name,
                       devise:wallet_to_update.devise
                     },
