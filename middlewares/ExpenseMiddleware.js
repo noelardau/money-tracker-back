@@ -1,8 +1,19 @@
-let {findExpenseByWalletId, createExpense, updateExpense, deleteExpense} = require("../services/expenseService")
+let {findExpenseById ,findExpenseByWalletId, createExpense, updateExpense, deleteExpense} = require("../services/expenseService")
 let {sendResponse, sendError} = require("../helpers/responseHandler")
  
 
+let getExpenseById = async (req, res)=>{
+  try {
+    let {idExpense} = req.params
+    let expense = await findExpenseById(idExpense)
 
+    sendResponse(res, expense,200)
+  } catch (error) {
+    sendError(res, error)
+  }
+
+
+}
 
 
 let getExpenseByWalletId = async (req,res)=>{
@@ -70,6 +81,7 @@ let deleteExpenseById = async (req, res, next)=>{
 
 
 module.exports = {
-    getExpenseByWalletId,
+  getExpenseById,  
+  getExpenseByWalletId,
     postExpense, putUpdateExpense, deleteExpenseById
 }

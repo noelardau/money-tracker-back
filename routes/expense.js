@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var {getExpenseByWalletId, postExpense, putUpdateExpense, deleteExpenseById} = require("../middlewares/ExpenseMiddleware")
+var {getExpenseById, getExpenseByWalletId, postExpense, putUpdateExpense, deleteExpenseById} = require("../middlewares/ExpenseMiddleware")
 
+router.get("/one/:idExpense", getExpenseById)
 router.get('/:idWallet', getExpenseByWalletId );
 router.post("/", postExpense)
 router.put("/", putUpdateExpense)

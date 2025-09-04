@@ -1,6 +1,23 @@
 let prisma = require("../lib/prisma")
 let expense_model = prisma.expense
 
+let findExpenseById = async (idExpense)=>{
+  try {
+    let expense = await expense_model.findUnique({
+      where: {
+        id: Number(idExpense)
+      }
+    })
+
+    return expense
+
+  } catch (error) {
+    throw error
+  }
+
+
+}
+
 
 async function findExpenseByWalletId(idWallet) {
     try {    
@@ -73,5 +90,5 @@ let deleteExpense = async(id_expense)=>{
 
 
 module.exports = { 
-    createExpense, findExpenseByWalletId, updateExpense, deleteExpense
+    createExpense, findExpenseById, findExpenseByWalletId, updateExpense, deleteExpense
 }
