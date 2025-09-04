@@ -2,15 +2,15 @@
 
 function sendResponse(res, data, status){
 
-    res.send({
+    res.status(200).json({
         status,
         body: data
     })
 }
 
 function sendError(res, error){
-    res.send({
-        status:500,
+    res.status(500).json({
+        status:false,
         error: error
     })
 }

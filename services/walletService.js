@@ -1,6 +1,26 @@
 let prisma = require("../lib/prisma")
 let wallet_model = prisma.wallet
 
+let findWalletById = async (idWallet)=>{
+  try {
+    let wallet = await wallet_model.findUnique({
+      where:{
+        id: +idWallet
+      }
+    })
+
+    console.log(wallet);
+    
+
+    return wallet
+    
+  } catch (error) {
+    console.log(error);
+    
+    throw error
+  }
+}
+
 let findWalletByUserId = async (idUser)=>{
     try {    
           if(idUser == undefined){
@@ -106,6 +126,7 @@ let soldeDown = async(deleted_expense)=>{
 
 
 module.exports = {
+    findWalletById,
     findWalletByUserId,
     createWallet,
     updateWallet,
