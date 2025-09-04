@@ -126,9 +126,9 @@ let soldeDown = async(deleted_expense)=>{
 
 
 module.exports = {
+    createWallet,
     findWalletById,
     findWalletByUserId,
-    createWallet,
     updateWallet,
     deleteWallet,
     soldeUp,

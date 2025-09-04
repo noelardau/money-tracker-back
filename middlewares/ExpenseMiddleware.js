@@ -81,7 +81,8 @@ let deleteExpenseById = async (req, res, next)=>{
 
 
 module.exports = {
+  postExpense,
   getExpenseById,  
   getExpenseByWalletId,
-    postExpense, putUpdateExpense, deleteExpenseById
+     putUpdateExpense, deleteExpenseById
 }

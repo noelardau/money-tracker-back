@@ -2,6 +2,21 @@ let prisma = require("../lib/prisma")
 let income_model = prisma.income
 
 
+let findIncomeById = async (idIncome)=>{
+  try {
+        let income = await income_model.findUnique({
+          where: {
+            id: Number(idIncome)
+          }
+        })
+
+        return income
+
+  } catch (error) {
+    throw error
+  }
+}
+
 async function findIncomeByWalletId(idWallet) {
     try {    
           if(idWallet == undefined){
@@ -73,5 +88,5 @@ let deleteIncome = async(id_income)=>{
 
 
 module.exports = { 
-    createIncome, findIncomeByWalletId, updateIncome, deleteIncome
+    createIncome, findIncomeById, findIncomeByWalletId, updateIncome, deleteIncome
 }

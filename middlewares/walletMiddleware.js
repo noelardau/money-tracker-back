@@ -1,4 +1,4 @@
-let {findWalletById, findWalletByUserId, createWallet, updateWallet, deleteWallet, soldeUp, soldeDown} = require("../services/walletService")
+let { createWallet,findWalletById, findWalletByUserId, updateWallet, deleteWallet, soldeUp, soldeDown} = require("../services/walletService")
 let {sendResponse, sendError} = require("../helpers/responseHandler")
 
 let getWalletById = async (req,res)=>{
@@ -107,9 +107,9 @@ let updateSoldeToDown = async(req,res)=>{
 }
 
 module.exports = {
+    postNewWallet,
     getWalletById,
     getWalletsByUserId,
-    postNewWallet,
     putUpdateWallet,
     deleteWalletById,
     updateSoldeToUp,

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var {getWalletById, getWalletsByUserId, postNewWallet, deleteWalletById, putUpdateWallet, updateSoldeToUp, updateSoldeToDown} = require("../middlewares/walletMiddleware")
+var { postNewWallet, getWalletById, getWalletsByUserId, deleteWalletById, putUpdateWallet, updateSoldeToUp, updateSoldeToDown} = require("../middlewares/walletMiddleware")
 
 router.get("/one/:idWallet", getWalletById)
 router.get('/:idUser', getWalletsByUserId );

@@ -1,8 +1,21 @@
-let {findIncomeByWalletId, deleteIncome, updateIncome, createIncome} = require("../services/incomeService")
+let {findIncomeById,findIncomeByWalletId, deleteIncome, updateIncome, createIncome} = require("../services/incomeService")
 let {sendResponse, sendError} = require("../helpers/responseHandler")
  
 
+let getIncomeById = async (req,res)=>{
+  try {
+      let {idIncome} = req.params
+      let income = await findIncomeById(idIncome)
+      console.log(income);
+      
+      sendResponse(res,income,true)
+  } catch (error) {
+    sendError(res,error)    
+  }
 
+
+
+}
 
 
 let getIncomeByWalletId = async (req,res)=>{
@@ -67,6 +80,8 @@ let deleteIncomeById = async (req, res, next)=>{
 
 
 module.exports = {
-    getIncomeByWalletId,
-    postIncome, putUpdateIncome, deleteIncomeById
+  postIncome,
+  getIncomeById,
+  getIncomeByWalletId,
+  putUpdateIncome, deleteIncomeById
 }

@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var {getIncomeByWalletId, postIncome, putUpdateIncome, deleteIncomeById} = require("../middlewares/IncomeMiddleware")
+var {postIncome,getIncomeById, getIncomeByWalletId, putUpdateIncome, deleteIncomeById} = require("../middlewares/IncomeMiddleware")
 
+
+router.get("/one/:idIncome", getIncomeById)
 router.get('/:idWallet', getIncomeByWalletId );
 router.post("/", postIncome)
 router.put("/", putUpdateIncome)
