@@ -46,8 +46,8 @@ async function createExpense (newExpense){
 
     let created_expense = await expense_model.create({
         data: {
-            idWallet: newExpense.idWallet,
-            value: newExpense.value,
+            idWallet: Number(newExpense.idWallet),
+            value: Number(newExpense.value),
             description: newExpense.description
         }
     })
