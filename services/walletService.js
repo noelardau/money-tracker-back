@@ -87,17 +87,17 @@ let deleteWallet = async(idWallet)=>{
 }
 
 
-let soldeUp = async(deleted_expense)=>{
+let soldeUp = async({value, idWallet})=>{
       
       try {      
           
           let wallet_updated = await wallet_model.update({
               data: {
                       solde:  {
-                        increment: deleted_expense.value
+                        increment: value
                       },
                     },
-              where: {id: deleted_expense.idWallet}
+              where: {id: idWallet}
           })
 
           return wallet_updated
@@ -107,17 +107,17 @@ let soldeUp = async(deleted_expense)=>{
 }
 
 
-let soldeDown = async(deleted_expense)=>{
+let soldeDown = async({value,idWallet})=>{
       
       try {      
           
           let wallet_updated = await wallet_model.update({
               data: {
                       solde:  {
-                        decrement: deleted_expense.value
+                        decrement: value
                       },
                     },
-              where: {id: deleted_expense.idWallet}
+              where: {id: idWallet}
           })
 
           return wallet_updated
