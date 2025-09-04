@@ -48,7 +48,9 @@ let createWallet = async (new_wallet)=>{
           let wallet_created = await wallet_model.create({
               data: {
                       idUser: new_wallet.idUser,
-                      name: new_wallet.name
+                      name: new_wallet.name,
+                      devise: new_wallet.devise,
+                      solde: new_wallet.solde
                     }
           })
 
@@ -63,7 +65,8 @@ let updateWallet = async(wallet_to_update)=>{
           let wallet_updated = await wallet_model.update({
               data: {
                       solde: wallet_to_update.solde,
-                      name: wallet_to_update.name
+                      name: wallet_to_update.name,
+                      devise:wallet_to_update.devise
                     },
               where: {id: wallet_to_update.id}
           })
