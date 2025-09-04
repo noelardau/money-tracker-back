@@ -32,6 +32,9 @@ async function findExpenseByWalletId(idWallet) {
           let expenses = await expense_model.findMany({
               where: {
                         idWallet: +idWallet
+                      },
+                      orderBy:{
+                        date:"desc"
                       }
           })
 
