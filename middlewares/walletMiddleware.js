@@ -59,18 +59,18 @@ let putUpdateWallet = async(req,res)=>{
 }
 
 
-let deleteWalletById = async (req, res,next)=>{
+let deleteWalletById = async (req, res)=>{
 
   try {
     
     let deleted_wallet = await deleteWallet(req.params.idWallet)
     
     sendResponse(res, deleted_wallet, 200)
-    next()
+  
 
   } catch (error) {
     sendError(res, error)
-    next()
+  
   }  
 }
 

@@ -24,7 +24,7 @@ model Expense {
   value       Int
   date        DateTime @default(now())
   idWallet    Int
-  wallet      Wallet   @relation(references: [id], fields: [idWallet])
+  wallet      Wallet   @relation(references: [id], fields: [idWallet], onDelete: Cascade)
 }
 
 model Income {
@@ -33,5 +33,5 @@ model Income {
   value       Int
   date        DateTime @default(now())
   idWallet    Int
-  wallet      Wallet   @relation(references: [id], fields: [idWallet])
+  wallet      Wallet   @relation(references: [id], fields: [idWallet], onDelete: Cascade)
 }

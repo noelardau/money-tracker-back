@@ -62,19 +62,17 @@ let putUpdateExpense = async(req,res)=>{
 }
 
 
-let deleteExpenseById = async (req, res, next)=>{
+let deleteExpenseById = async (req, res)=>{
 
   try {
     console.log(req.params.idExpense)
     
     let deleted_expense = await deleteExpense(req.params.idExpense)
     sendResponse(res, deleted_expense, 200)
-    sendResponse(req.params.idExpense)
-    next()
-
+    
   } catch (error) {
     sendError(res, error)
-    next()
+    
   }  
 }
 
