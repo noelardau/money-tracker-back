@@ -5,8 +5,6 @@ let getWalletById = async (req,res)=>{
 try {
     
     let {idWallet} = req.params
-    console.log(idWallet);
-    
     let wallet = await findWalletById(idWallet)
 
     sendResponse(res,wallet,200)  
