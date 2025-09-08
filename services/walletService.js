@@ -34,6 +34,9 @@ let findWalletByUserId = async (idUser)=>{
           let user_wallets = await wallet_model.findMany({
               where: {
                         idUser: idUser
+                      },
+                      orderBy:{
+                        id: "desc"
                       }
           })
 
