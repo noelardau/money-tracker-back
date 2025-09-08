@@ -29,7 +29,7 @@ async function findIncomeByWalletId(idWallet) {
 
           let incomes = await income_model.findMany({
               where: {
-                        idWallet: +idWallet
+                        idWallet: Number(idWallet)
                       }
           })
 
@@ -44,7 +44,7 @@ async function createIncome (newIncome){
 
     let created_income = await income_model.create({
         data: {
-            idWallet: newIncome.idWallet,
+            idWallet: Number(newIncome.idWallet),
             value: newIncome.value,
             description: newIncome.description
         }
@@ -63,7 +63,7 @@ let updateIncome = async(income_to_update)=>{
                       description: income_to_update.description,
                       value: income_to_update.value,                      
                     },
-              where: {id: income_to_update.id}
+              where: {id: Number(income_to_update.id)}
           })
 
           return income_updated
@@ -75,7 +75,7 @@ let updateIncome = async(income_to_update)=>{
 let deleteIncome = async(id_income)=>{
     try {
         
-        let income_deleted = await income_model.delete({ where: {id: +id_income}})
+        let income_deleted = await income_model.delete({ where: {id: Number(id_income)}})
         return income_deleted 
 
         } catch (error) {
