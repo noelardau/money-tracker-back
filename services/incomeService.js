@@ -45,7 +45,7 @@ async function createIncome (newIncome){
     let created_income = await income_model.create({
         data: {
             idWallet: Number(newIncome.idWallet),
-            value: newIncome.value,
+            value: Number(newIncome.value),
             description: newIncome.description
         }
     })
