@@ -9,14 +9,12 @@ let findWalletById = async (idWallet)=>{
       }
     })
 
-    console.log(wallet);
     
 
     return wallet
     
   } catch (error) {
-    console.log(error);
-    
+   
     throw error
   }
 }
