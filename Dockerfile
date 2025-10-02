@@ -1,0 +1,22 @@
+FROM node:24.4
+
+
+# Set working directory
+WORKDIR /app
+
+
+# Copy package.json and package-lock.json first to leverage Docker cache
+COPY package*.json ./
+
+
+# Copy the rest of the application code
+COPY . .
+
+# Expose application port (change if needed)
+
+RUN npm install
+
+EXPOSE 3000
+
+# Start the application (change if needed)
+CMD ["npm", "run", "dev"]
