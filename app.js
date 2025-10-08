@@ -8,6 +8,7 @@ var cors = require("cors")
 let wallet_router = require("./routes/wallet")
 let expense_router = require("./routes/expense")
 let income_router = require("./routes/income")
+let user_router = require("./routes/user")
 
 var app = express();
 
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api.wallets/', wallet_router);
 app.use("/api.expenses/", expense_router)
 app.use("/api.incomes/", income_router)
+app.use("/api.users/", user_router)
 
 
 module.exports = app;

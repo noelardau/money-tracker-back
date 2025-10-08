@@ -9,6 +9,7 @@ function sendResponse(res, data, status){
 }
 
 function sendError(res, error){
+    console.log(error)
     res.status(500).json({
         status:false,
         error: error
