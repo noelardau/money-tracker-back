@@ -4,8 +4,7 @@ const {verify} = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 const SECRET_KEY = process.env.SECRET_KEY
-console.log("SECRET_KEY")
-console.log(SECRET_KEY)
+
 
 const authenticateToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
